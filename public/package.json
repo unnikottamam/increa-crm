@@ -1,0 +1,41 @@
+{
+  "name": "increa-crm",
+  "version": "1.0.0",
+  "description": "Increa CRM",
+  "main": "index.js",
+  "scripts": {
+    "start": "node_modules/.bin/gulp watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unnikottamam/dgl-209.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/unnikottamam/dgl-209/issues"
+  },
+  "homepage": "https://github.com/unnikottamam/dgl-209#readme",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "5.15.1",
+    "bootstrap": "4.5.3",
+    "chart.js": "2.9.4",
+    "datatables.net-bs4": "1.10.22",
+    "jquery": "3.5.1",
+    "jquery.easing": "^1.4.1"
+  },
+  "devDependencies": {
+    "browser-sync": "2.26.13",
+    "del": "6.0.0",
+    "gulp": "4.0.2",
+    "gulp-autoprefixer": "7.0.1",
+    "gulp-clean-css": "4.3.0",
+    "gulp-header": "2.0.9",
+    "gulp-plumber": "^1.2.1",
+    "gulp-rename": "2.0.0",
+    "gulp-sass": "4.1.0",
+    "gulp-uglify": "3.0.2",
+    "merge-stream": "2.0.0"
+  }
+}

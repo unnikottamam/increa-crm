@@ -1,0 +1,38 @@
+{
+  "name": "increa-crm",
+  "version": "0.1.0",
+  "description": "Increa CRM",
+  "engines": {
+    "node": "8.9.1"
+  },
+  "main": "heroku.js",
+  "scripts": {
+    "start": "node heroku.js",
+    "server": "nodemon heroku.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.5",
+    "defined": "^1.0.0",
+    "dotenv": "^5.0.1",
+    "ejs": "^2.5.6",
+    "express": "^4.17.1",
+    "express-messages": "^1.0.1",
+    "express-session": "^1.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.4.12",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "sanitize": "^2.1.0",
+    "validator": "^13.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4",
+    "request": "^2.88.0",
+    "tape": "^4.7.0"
+  }
+}

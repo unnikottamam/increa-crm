@@ -1,0 +1,80 @@
+<%- include("partials/header") %>
+
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Leads</h1>
+<p class="mb-4">
+  Here are the list of leads geenrated from the website form. You can see the
+  website form here
+  <a target="_blank" href="#">Website Lead Generation Form</a>.
+</p>
+
+<%- messages('partials/messages', locals) %>
+
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">
+      Leads From Website
+    </h6>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table
+        class="table table-bordered"
+        id="dataTable"
+        width="100%"
+        cellspacing="0"
+      >
+        <thead>
+          <tr>
+            <th>Lead Info</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <th>Lead Info</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </tfoot>
+        <tbody>
+          <% if (Object.values(leads).length > 0) { %> <%
+          Object.values(leads).forEach(function(leadItem) { %>
+          <tr class="bg-gray-200">
+            <td><%= leadItem.firstname %> <%= leadItem.lastname %></td>
+            <td><%= leadItem.email ? leadItem.email : "" %></td>
+            <td><%= leadItem.phone ? leadItem.phone : "" %></td>
+            <td><%= leadItem.tag ? leadItem.tag : "" %></td>
+            <td>
+              <div class="dropdown">
+                <button
+                  class="btn btn-secondary dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  Actions
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">View</a>
+                  <a class="dropdown-item" href="#">Edit</a>
+                  <a class="dropdown-item" href="#">Add to Delete</a>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <% }); %> <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<%- include("partials/footer") %>
