@@ -1,20 +1,26 @@
 <%- include("partials/header") %>
 
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Leads</h1>
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-2 text-gray-800">Leads</h1>
+  <a
+    href="/create-lead"
+    class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+  >
+    Create a Lead
+  </a>
+</div>
 <p class="mb-4">
   Here are the list of leads geenrated from the website form. You can see the
-  website form here
-  <a target="_blank" href="#">Website Lead Generation Form</a>.
+  website form here to create a new lead
+  <a target="_blank" href="/web-form.html">Website Lead Generation Form</a>.
 </p>
 
 <%- messages('partials/messages', locals) %>
 
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-primary">
-      Leads From Website
-    </h6>
+    <h6 class="m-0 font-weight-bold text-primary">Leads</h6>
   </div>
   <div class="card-body">
     <div class="table-responsive">
@@ -44,12 +50,15 @@
         </tfoot>
         <tbody>
           <% if (Object.values(leads).length > 0) { %> <%
-          Object.values(leads).forEach(function(leadItem) { %>
-          <tr class="bg-gray-200">
+          Object.values(leads).forEach(function(leadItem) { %> <% if
+          (!leadItem.isarchive) { %>
+          <tr>
             <td><%= leadItem.firstname %> <%= leadItem.lastname %></td>
             <td><%= leadItem.email ? leadItem.email : "" %></td>
             <td><%= leadItem.phone ? leadItem.phone : "" %></td>
-            <td><%= leadItem.tag ? leadItem.tag : "" %></td>
+            <td class="text-capitalize">
+              <%= leadItem.tag ? leadItem.tag : "" %>
+            </td>
             <td>
               <div class="dropdown">
                 <button
@@ -63,14 +72,48 @@
                   Actions
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">View</a>
-                  <a class="dropdown-item" href="#">Edit</a>
-                  <a class="dropdown-item" href="#">Add to Delete</a>
+                  <a class="dropdown-item" href="/lead/view/<%= leadItem._id %>"
+                    >View</a
+                  >
+                  <a class="dropdown-item" href="/lead/edit/<%= leadItem._id %>"
+                    >Edit</a
+                  >
+                  <form
+                    method="post"
+                    action="/lead/delete-lead/<%= leadItem._id %>"
+                  >
+                    <button type="submit" class="dropdown-item">Delete</button>
+                  </form>
+                  <form method="post" action="/admin/add-client">
+                    <input
+                      type="hidden"
+                      name="name"
+                      value="<%= leadItem.firstname %> <%= leadItem.lastname %>"
+                    />
+                    <input
+                      type="hidden"
+                      name="email"
+                      value="<%= leadItem.email %>"
+                    />
+                    <input
+                      type="hidden"
+                      name="phone"
+                      value="<%= leadItem.phone %>"
+                    />
+                    <input
+                      type="hidden"
+                      name="address"
+                      value="<%= leadItem.address %>"
+                    />
+                    <button type="submit" class="dropdown-item">
+                      Create Client
+                    </button>
+                  </form>
                 </div>
               </div>
             </td>
           </tr>
-          <% }); %> <% } %>
+          <% } %> <% }); %> <% } %>
         </tbody>
       </table>
     </div>

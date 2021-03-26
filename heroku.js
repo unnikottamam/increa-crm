@@ -70,8 +70,10 @@ app.get("/leads", function(req, res, next) {
 
 const leads = require("./routes/api/leads");
 const users = require("./routes/api/users");
+const admin = require("./routes/api/admin");
 app.use("/", leads);
 app.use("/", users);
+app.use("/admin", admin);
 
 app.get("*", function(req, res) {
   return res.render("not-found", {

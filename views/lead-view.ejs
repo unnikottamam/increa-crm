@@ -1,0 +1,44 @@
+<%- include("partials/header") %>
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-2 text-gray-800">View Lead</h1>
+
+  <% if (!lead.isarchive || !lead.todelete) { %>
+  <a
+    class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+    href="/lead/edit/<%= lead._id %>"
+  >
+    Edit Lead
+  </a>
+  <% } %>
+</div>
+<p class="mb-4">
+  You can see the website form here to create a new lead
+  <a target="_blank" href="/web-form.html">Website Lead Generation Form</a>.
+</p>
+
+<%- messages('partials/messages', locals) %> <% if (locals.errors) { %> <%
+Object.values(errors).forEach(function(error){ %>
+<div class="alert alert-dismissible mb-3 alert-warning">
+  <%= error %>
+  <button class="close" data-dismiss="alert" type="button">&times;</button>
+</div>
+<% }); %> <% } %>
+
+<div class="card">
+  <div class="card-header">
+    <h6 class="m-0 font-weight-bold text-primary text-capitalize">
+      <%= lead.firstname %> <%= lead.lastname %>
+    </h6>
+    [ID: <%= lead._id %>]
+  </div>
+  <div class="card-body">
+    Phone: <%= lead.phone ? lead.phone : "" %> <br />
+    Email: <%= lead.email ? lead.email : "" %> <br />
+    Address: <%= lead.address ? lead.address : "" %> <br />
+    Company: <%= lead.company %>
+  </div>
+</div>
+
+<%- include("partials/footer") %>

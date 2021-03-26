@@ -25,6 +25,14 @@
 
     <!-- Custom styles for this template-->
     <link href="/css/sb-admin-2.min.css" rel="stylesheet" />
+
+    <style>
+      .alert-error {
+          color: #806520;
+          background-color: #fdf3d8;
+          border-color: #fceec9;
+      }
+    </style>
   </head>
 
   <body class="bg-gradient-primary">
@@ -42,13 +50,9 @@
                     <%- messages('partials/messages', locals) %> <% if
                     (locals.errors) { %> <%
                     Object.values(errors).forEach(function(error){ %>
-                    <div class="c-alert c-alert--warning alert fade show">
+                    <div class="alert alert-dismissible mb-3 alert-warning">
                       <%= error %>
-                      <button
-                        class="c-close"
-                        data-dismiss="alert"
-                        type="button"
-                      >
+                      <button class="close" data-dismiss="alert" type="button">
                         &times;
                       </button>
                     </div>

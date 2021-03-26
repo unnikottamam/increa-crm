@@ -1,0 +1,91 @@
+<%- include("partials/header") %>
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-2 text-gray-800">Clients</h1>
+  <a
+    href="/admin/add-client"
+    class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+  >
+    Create a Client
+  </a>
+</div>
+<p class="mb-4">Here are the list of all clients associated with the clients</p>
+
+<%- messages('partials/messages', locals) %>
+
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">
+      Clients List
+    </h6>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table
+        class="table table-bordered"
+        id="dataTable"
+        width="100%"
+        cellspacing="0"
+      >
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Action</th>
+          </tr>
+        </tfoot>
+        <tbody>
+          <% if (Object.values(clients).length > 0) { %> <%
+          Object.values(clients).forEach(function(clientItem) { %>
+          <tr>
+            <td><%= clientItem.name %></td>
+            <td><%= clientItem.email ? clientItem.email : "" %></td>
+            <td><%= clientItem.phone ? clientItem.phone : "" %></td>
+            <td><%= clientItem.address ? clientItem.address : "" %></td>
+            <td>
+              <div class="dropdown">
+                <button
+                  class="btn btn-secondary dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  Actions
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a
+                    class="dropdown-item"
+                    href="/admin/client/view/<%= clientItem._id %>"
+                    >View
+                  </a>
+                  <a
+                    class="dropdown-item"
+                    href="/admin/client/edit/<%= clientItem._id %>"
+                    >Edit Client</a
+                  >
+                </div>
+              </div>
+            </td>
+          </tr>
+          <% }); %> <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<%- include("partials/footer") %>

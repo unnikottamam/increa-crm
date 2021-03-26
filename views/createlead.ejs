@@ -1,0 +1,102 @@
+<%- include("partials/header") %>
+
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Create a Lead</h1>
+<p class="mb-4">
+  Please fill the form to create a lead. You can also see the website form here
+  <a target="_blank" href="/web-form.html">Website Lead Generation Form</a>.
+</p>
+
+<%- messages('partials/messages', locals) %> <% if (locals.errors) { %> <%
+Object.values(errors).forEach(function(error){ %>
+<div class="alert alert-dismissible mb-3 alert-warning">
+  <%= error %>
+  <button class="close" data-dismiss="alert" type="button">&times;</button>
+</div>
+<% }); %> <% } %>
+
+<form method="post" action="/create-lead" class="row comm_form">
+  <div class="col-md-6 col-12">
+    <div class="form-group">
+      <label>First name *</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="First name"
+        name="firstname"
+      />
+    </div>
+  </div>
+  <div class="col-md-6 col-12">
+    <div class="form-group">
+      <label>Last name</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Last name"
+        name="lastname"
+      />
+    </div>
+  </div>
+  <div class="col-md-6 col-12">
+    <div class="form-group">
+      <label>Address *</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Address"
+        name="address"
+      />
+    </div>
+  </div>
+  <div class="col-md-6 col-12">
+    <div class="form-group">
+      <label>Phone *</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Phone"
+        name="phone"
+      />
+    </div>
+  </div>
+  <div class="col-md-6 col-12">
+    <div class="form-group">
+      <label>E-mail Address *</label>
+      <input
+        type="email"
+        class="form-control"
+        placeholder="E-mail"
+        name="email"
+      />
+    </div>
+  </div>
+  <div class="col-md-6 col-12">
+    <div class="form-group">
+      <label>Company</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Company"
+        name="company"
+      />
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="form-group">
+      <label>Tag</label>
+      <select class="form-control" name="tag">
+        <option value="review">Review</option>
+        <option value="in-progresss">in Progresss</option>
+        <option value="completed">Completed</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-lg btn-primary">
+      Create Lead
+    </button>
+  </div>
+</form>
+
+<%- include("partials/footer") %>

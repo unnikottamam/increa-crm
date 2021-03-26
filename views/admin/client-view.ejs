@@ -1,0 +1,35 @@
+<%- include("../partials/header") %>
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-2 text-gray-800">Client Details</h1>
+
+  <a
+    class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+    href="/admin/client/edit/<%= clients._id %>"
+  >
+    Edit Client
+  </a>
+</div>
+<p class="mb-4">
+  You can create a new client here :
+  <a target="_blank" href="/admin/add-client">Create a new Client</a>.
+</p>
+
+<%- messages('partials/messages', locals) %>
+
+<div class="card">
+  <div class="card-header">
+    <h6 class="m-0 font-weight-bold text-primary text-capitalize">
+      <%= clients.name %>
+    </h6>
+    [ID: <%= clients._id %>]
+  </div>
+  <div class="card-body">
+    Phone: <%= clients.phone ? clients.phone : "" %> <br />
+    Email: <%= clients.email ? clients.email : "" %> <br />
+    Address: <%= clients.address ? clients.address : "" %>
+  </div>
+</div>
+
+<%- include("../partials/footer") %>

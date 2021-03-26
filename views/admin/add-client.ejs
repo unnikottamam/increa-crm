@@ -1,0 +1,70 @@
+<%- include("../partials/header") %>
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-2 text-gray-800">
+    <% if (locals.clients) { %> Edit client : <%= clients.name %> <% } else { %>
+    Add a Client <% } %>
+  </h1>
+</div>
+<p class="mb-4">
+  You can see the website form here to create a new lead
+  <a target="_blank" href="/web-form.html">Website Lead Generation Form</a>.
+</p>
+
+<%- messages('partials/messages', locals) %> <% if (locals.addclientErrors) { %>
+<% Object.values(addclientErrors).forEach(function(error){ %>
+<div class="alert alert-dismissible mb-3 alert-warning">
+  <%= error %>
+  <button class="close" data-dismiss="alert" type="button">&times;</button>
+</div>
+<% }); %> <% } %>
+
+<form method="post" <% if (locals.clients) { %>
+  action="/admin/client/edit/<%= clients._id %>"<% } else {
+  %>action="/admin/add-client"<% } %> class="row">
+  <div class="col-6">
+    <div class="form-group">
+      <label>Client Name</label>
+      <input <% if (locals.clients && clients.name) { %>value="<%=
+      clients.name %>" <% } %> type="text" placeholder="Full Name"
+      class="form-control" name="name" />
+    </div>
+  </div>
+  <% if (!locals.clients) { %>
+  <div class="col-6">
+    <div class="form-group">
+      <label>Client Email</label>
+      <input
+        type="text"
+        placeholder="Client Email"
+        class="form-control"
+        name="email"
+      />
+    </div>
+  </div>
+  <% } %>
+  <div class="col-6">
+    <div class="form-group">
+      <label>Phone Number</label>
+      <input <% if (locals.clients && clients.phone) { %>value="<%=
+      clients.phone %>" <% } %> type="text" placeholder="Phone Number"
+      class="form-control" name="phone" />
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="form-group">
+      <label>Address</label>
+      <input <% if (locals.clients && clients.address) { %>value="<%=
+      clients.address %>" <% } %> type="text" placeholder="Address"
+      class="form-control" name="address" />
+    </div>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-lg btn-primary">
+      <% if (locals.clients) { %>Edit<% } else { %>Add<% } %> Client
+    </button>
+  </div>
+</form>
+
+<%- include("../partials/footer") %>

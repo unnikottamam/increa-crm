@@ -1,6 +1,5 @@
 .env*
 .vscode*
 node_modules
-scss
 package-lock.json
 keys_dev.js

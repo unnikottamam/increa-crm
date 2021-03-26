@@ -15,17 +15,6 @@
   </a>
 
   <!-- Divider -->
-  <hr class="sidebar-divider my-0" />
-
-  <!-- Nav Item - Dashboard -->
-  <li class="nav-item">
-    <a class="nav-link" href="/">
-      <i class="fas fa-fw fa-tachometer-alt"></i>
-      <span>Dashboard</span></a
-    >
-  </li>
-
-  <!-- Divider -->
   <hr class="sidebar-divider" />
 
   <!-- Heading -->
@@ -44,16 +33,25 @@
   <% if (user && (user.role === 'admin' || user.role === 'superadmin')) { %>
   <!-- Nav Item -->
   <li class="nav-item">
-    <a class="nav-link" href="#">
+    <a class="nav-link" href="/admin/users">
       <i class="fas fa-fw fa-users"></i>
       <span>Users</span></a
+    >
+  </li>
+  <% } %> <% if (user && (user.role === 'admin' || user.role === 'superadmin'))
+  { %>
+  <!-- Nav Item -->
+  <li class="nav-item">
+    <a class="nav-link" href="/admin/clients">
+      <i class="far fa-address-card"></i>
+      <span>Clients</span></a
     >
   </li>
   <% } %>
 
   <!-- Nav Item -->
   <li class="nav-item">
-    <a class="nav-link" href="#">
+    <a class="nav-link" href="/admin/settings">
       <i class="fas fa-fw fa-cog"></i>
       <span>Settings</span></a
     >

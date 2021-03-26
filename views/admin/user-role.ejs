@@ -1,0 +1,40 @@
+<%- include("../partials/header") %>
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-2 text-gray-800">Change User Role</h1>
+</div>
+<p class="mb-4">
+  You can change the role of
+  <span class="text-capitalize text-primary font-weight-bold"><%= locals.currentUser.name %></span>(Current
+  role : <span class="text-capitalize"><%= locals.currentUser.role %></span>)
+</p>
+
+<%- messages('partials/messages', locals) %> <% if (locals.errors) { %> <%
+Object.values(errors).forEach(function(error){ %>
+<div class="alert alert-dismissible mb-3 alert-warning">
+  <%= error %>
+  <button class="close" data-dismiss="alert" type="button">&times;</button>
+</div>
+<% }); %> <% } %>
+
+<form method="post" action="/admin/user-role-change" class="row comm_form">
+  <input name="email" type="hidden" <% if (locals.currentUser) { %>value="<%=
+  locals.currentUser.email %>"<% } %>>
+  <div class="col-6">
+    <div class="form-group">
+      <label>Select Role</label>
+      <select class="form-control" name="role">
+        <option value="worker">Worker</option>
+        <option value="admin">Admin</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-lg btn-primary">
+      Change User
+    </button>
+  </div>
+</form>
+
+<%- include("../partials/footer") %>

@@ -5,6 +5,7 @@
   <!-- Sidebar Toggle (Topbar) -->
   <form class="form-inline">
     <button
+      type="button"
       id="sidebarToggleTop"
       class="btn btn-link d-md-none rounded-circle mr-3"
     >
@@ -25,8 +26,10 @@
         aria-haspopup="true"
         aria-expanded="false"
       >
-        <span class="mr-2 d-none d-lg-inline text-gray-600 small"
-          >Hi there</span
+        <span
+          class="mr-2 d-none d-lg-inline text-gray-600 small text-truncate"
+          style="max-width: 80px;"
+          >Hi <% if (user) { %><%= user.name %><% } %></span
         >
         <img class="img-profile rounded-circle" src="/img/undraw_profile.svg" />
       </a>
